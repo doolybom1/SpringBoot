@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<th:block th:include="head"></th:block>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>도서 등록</h2>
+<form method="POST" th:object="${book}" class="was-validated">
+	<div>
+		<label for="title">TITLE</label>
+		<input th:field=*{title} required="required">
+		<div class="valid-feedback">타이틀을 완성</div>
+		<div class="invalid-feedback">타이틀을 입력해주세요</div>
+	</div>
+	<div>
+		<label for="comp">출판사명</label>
+		<input th:field=*{comp}>
+	</div>
+	<div>
+		<label for="auth">저자</label>
+		<input th:field=*{auth}>
+	</div>
+	<div>
+		<label for="year">출판연도</label>
+		<input th:field=*{year}>
+	</div>
+	<div>
+		<label for="price">가격</label>
+		<input th:field=*{price}>
+	</div>
+	<button>저장</button>
+</form>
+</body>
+</html>

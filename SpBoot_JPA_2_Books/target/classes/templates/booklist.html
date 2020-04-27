@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:include="head"></th:block>
+<script>
+$(function(){
+	$(document).on("click", "#btn_insert", function(){
+		document.location.href = "/book/insert"
+	})
+
+	$(document).on("click",".b_tr",function(){
+		let id = $(this).data("book-id")
+		document.location.href ="/book/update?id="+ id
+	})
+})
+
+</script>
+
+</head>
+<body>
+<h3>도서리스트</h3>
+<table>
+	<tr>
+		<th>항목</th>
+		<th>도서명</th>
+		<th>출판사</th>
+		<th>저자</th>
+		<th>출판연도</th>
+		<th>가격</th>
+	</tr>
+	<tr th:each="book : ${bookList}" class="b_tr" th:data-book-id="${book.id}">
+		<td th:text=${book.id}>항목</td>
+		<td th:text=${book.title}>도서명</td>
+		<td th:text=${book.comp}>출판사</td>
+		<td th:text=${book.auth}>저자</td>
+		<td th:text=${book.year}>출판연도</td>
+		<td th:text=${book.price}>가격</td>
+		<td th:data-book-id="${book.id}">
+			<a th:href="@{/book/delete(id=${book.id})}">삭제</a>
+		</td>
+	</tr>
+</table>
+<th:block th:include="page"/>
+<button id="btn_insert">도서 등록</button>
+
+</body>
+</html>
