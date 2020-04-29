@@ -37,9 +37,10 @@ public class UserVO implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id",columnDefinition = "bigint")
 	private Long id;
 	
-	@Column(unique = true, length = 64)
+	@Column(unique = true, length = 64, columnDefinition = "varchar(64)")
 	private String username;
 	
 	// column을 설정하지 않으면  length = 255 자동설정
